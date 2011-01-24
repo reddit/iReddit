@@ -38,6 +38,7 @@
 		61C35F1011FF29DB001A2F85 /* voteDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 61C35F0011FF29DB001A2F85 /* voteDown@2x.png */; };
 		61C35F1111FF29DB001A2F85 /* voteUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 61C35F0111FF29DB001A2F85 /* voteUp@2x.png */; };
 		61DE6FA211FF399700B1F810 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 61DE6FA111FF399700B1F810 /* Default@2x.png */; };
+		89E2553F12E8533F008C98C5 /* ReadItLaterLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E2553E12E8533F008C98C5 /* ReadItLaterLite.m */; };
 		94C3A39612D74FE900E2BF79 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C3A39512D74FE900E2BF79 /* MainWindow-iPad.xib */; };
 		94C3A3CE12D757D000E2BF79 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C3A39512D74FE900E2BF79 /* MainWindow-iPad.xib */; };
 		94C3A41A12D75B8100E2BF79 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 94C3A41812D75B8100E2BF79 /* Default-Landscape.png */; };
@@ -659,6 +660,8 @@
 		61C35F0011FF29DB001A2F85 /* voteDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voteDown@2x.png"; sourceTree = "<group>"; };
 		61C35F0111FF29DB001A2F85 /* voteUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voteUp@2x.png"; sourceTree = "<group>"; };
 		61DE6FA111FF399700B1F810 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		89E2553D12E8533F008C98C5 /* ReadItLaterLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadItLaterLite.h; sourceTree = "<group>"; };
+		89E2553E12E8533F008C98C5 /* ReadItLaterLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadItLaterLite.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* iReddit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iReddit-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		94C3A39512D74FE900E2BF79 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		94C3A41812D75B8100E2BF79 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape.png"; path = "../iReddit/Default-Landscape.png"; sourceTree = SOURCE_ROOT; };
@@ -961,6 +964,8 @@
 		ADFB53350FEAC3EA0067CEC1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				89E2553D12E8533F008C98C5 /* ReadItLaterLite.h */,
+				89E2553E12E8533F008C98C5 /* ReadItLaterLite.m */,
 				ADFB533F0FEAC3EA0067CEC1 /* comments.html */,
 				ADFB53400FEAC3EA0067CEC1 /* Constants.h */,
 				ADFB53410FEAC3EA0067CEC1 /* Constants.m */,
@@ -1803,6 +1808,7 @@
 				E58C100E12B49244004D2070 /* SubredditDataModel.m in Sources */,
 				E58C109812B4A0DD004D2070 /* RedditWindow.m in Sources */,
 				E58C14B412B4E04A004D2070 /* SubredditTableViewDelegate.m in Sources */,
+				89E2553F12E8533F008C98C5 /* ReadItLaterLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

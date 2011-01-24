@@ -111,6 +111,11 @@ static void settingsSoundPlayedCallback(SystemSoundID  mySSID, void* myself)
 			@"Instapaper Account Information",
 			[SettingsControlItem textFieldControlWithTitle:@"Username" text:[defaults stringForKey:instapaperUsernameKey] placeholder:@"splashy" key:instapaperUsernameKey secure:NO],
 			[SettingsControlItem textFieldControlWithTitle:@"Password" text:[defaults stringForKey:instapaperPasswordKey] placeholder:@"optional" key:instapaperPasswordKey secure:YES],
+					   
+			@"ReadItLater Account Information",
+			[SettingsControlItem textFieldControlWithTitle:@"Username" text:[defaults stringForKey:readItLaterUsernameKey] placeholder:@"splashy" key:readItLaterUsernameKey secure:NO],
+			[SettingsControlItem textFieldControlWithTitle:@"Password" text:[defaults stringForKey:readItLaterPasswordKey] placeholder:@"••••••" key:readItLaterPasswordKey secure:YES],
+					   
 
 			@"Customized reddits",
 			[SettingsControlItem switchControlWithTitle:@"Use Account Settings" on:[defaults boolForKey:useCustomRedditListKey] key:useCustomRedditListKey],
@@ -216,6 +221,5 @@ static void settingsSoundPlayedCallback(SystemSoundID  mySSID, void* myself)
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:object.URL]];
 	}
 }
-
 
 @end
