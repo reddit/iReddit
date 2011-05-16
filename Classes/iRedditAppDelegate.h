@@ -30,6 +30,7 @@
 + (UIColor *)redditNavigationBarTintColor;
 + (iRedditAppDelegate *)sharedAppDelegate;
 
+- (void)loadRandomData;
 - (void)reloadSound;
 - (void)showRandomStory;
 

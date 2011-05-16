@@ -85,6 +85,11 @@ iRedditAppDelegate *sharedAppDelegate;
     [self loadRandomData];
 }
 
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+	shouldDetectDeviceShake = NO;
+}
+
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
 #ifdef DEPRECATED_FREE
@@ -102,6 +107,7 @@ iRedditAppDelegate *sharedAppDelegate;
         [deprecatedAlert release];
     }
 #endif
+    shouldDetectDeviceShake = YES;
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
