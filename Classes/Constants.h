@@ -35,6 +35,8 @@ NSString *const showLoadingAlienKey;
 NSString *const RedditUserLoggedInNotification;
 NSString *const instapaperUsernameKey;
 NSString *const instapaperPasswordKey;
+NSString *const readItLaterUsernameKey;
+NSString *const readItLaterPasswordKey;
 NSString *const shakingSoundKey;
 NSString *const redditSortOrderKey;
 NSString *const allowLandscapeOrientationKey;

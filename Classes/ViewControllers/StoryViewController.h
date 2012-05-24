@@ -10,8 +10,9 @@
 #import <Three20/Three20.h>
 #import "Story.h"
 #import "AlienProgressView.h"
+#import "ReadItLaterLite.h"
 
-@interface StoryViewController : TTViewController <UIWebViewDelegate>
+@interface StoryViewController : TTViewController <UIWebViewDelegate, ReadItLaterDelegate>
 {
 	BOOL		isForComments;
 	
@@ -50,6 +51,7 @@
 - (IBAction)segmentAction:(id)sender;
 - (void)saveCurrentStory:(id)sender;
 - (void)saveOnInstapaper:(id)sender;
+- (void)saveOnReadItLater:(id)sender;
 - (void)hideCurrentStory:(id)sender;
 
 - (void)setScore:(int)score;

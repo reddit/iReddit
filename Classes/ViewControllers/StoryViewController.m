@@ -14,7 +14,7 @@
 #import "SubredditViewController.h"
 #import "RedditWebView.h"
 #import "iRedditAppDelegate.h"
-
+#import "ReadItLaterLite.h"
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
 
@@ -360,7 +360,7 @@
 						delegate:(id <UIActionSheetDelegate>)self
 						cancelButtonTitle:@"Cancel"
 						destructiveButtonTitle:nil
-						otherButtonTitles:@"E-mail Link", @"Open Link in Safari", @"Hide on reddit", @"Save on reddit", @"Save on Instapaper", nil];
+						otherButtonTitles:@"E-mail Link", @"Open Link in Safari", @"Hide on reddit", @"Save on reddit", @"Save on Instapaper", @"Save on ReadItLater", nil];
 		
 		currentSheet.actionSheetStyle = UIActionSheetStyleDefault;
 		
@@ -458,6 +458,11 @@
 	}
 	else if(buttonIndex == 4)
 		[self actionSheetCancel:currentSheet];
+	else if(buttonIndex == 5)
+	{
+		[self saveOnReadItLater:nil];
+		//[[Beacon shared] startSubBeaconWithName:@"instapaper" timeSession:NO];
+	}
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
@@ -501,6 +506,32 @@
 	
 	[request send];
 }
+
+- (void)saveOnReadItLater:(id)sender
+{
+	NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:readItLaterUsernameKey];
+	NSString *password = [[NSUserDefaults standardUserDefaults] stringForKey:readItLaterPasswordKey];
+	
+	if (!username || [username isEqual:@""])
+	{
+		[[[[UIAlertView alloc] initWithTitle:@"ReadItLater Error" 
+									 message:@"You must provide an ReadItLater username to save stories with ReadItLater. You can add a username in the iReddit settings." 
+									delegate:nil 
+						   cancelButtonTitle:@"OK" 
+						   otherButtonTitles:nil] autorelease] show];
+		return;
+	}
+	
+	NSString *url = story.URL;
+	if (isForComments && story.commentsURL)
+		url = story.commentsURL;
+	
+	NSString *storyTitle = story.title ? story.title : @"no title";
+	
+	[ReadItLater save:[NSURL URLWithString:url]  title:storyTitle delegate:self username:username password:password];
+	
+}
+
 
 - (void)saveCurrentStory:(id)sender
 {
@@ -665,5 +696,43 @@
     [super dealloc];
 }
 
+- (void)readItLaterSaveFinished:(NSString*)stringResponse error:(NSString*)errorString
+{
+	if (errorString)
+	{
+		[[[[UIAlertView alloc] initWithTitle:@"ReadItLater Error" 
+									 message:errorString 
+									delegate:nil 
+						   cancelButtonTitle:@"OK" 
+						   otherButtonTitles:nil] autorelease] show];
+		return;
+	}
+}
+
+- (void) readItLaterSignupFinished:(NSString*)stringResponse error:(NSString*)errorString 
+{
+	if (errorString)
+	{
+		[[[[UIAlertView alloc] initWithTitle:@"ReadItLater Error" 
+									 message:errorString 
+									delegate:nil 
+						   cancelButtonTitle:@"OK" 
+						   otherButtonTitles:nil] autorelease] show];
+		return;
+	}
+}
+
+- (void) readItLaterLoginFinished:(NSString*)stringResponse error:(NSString*)errorString 
+{
+	if (errorString)
+	{
+		[[[[UIAlertView alloc] initWithTitle:@"ReadItLater Error" 
+									 message:errorString 
+									delegate:nil 
+						   cancelButtonTitle:@"OK" 
+						   otherButtonTitles:nil] autorelease] show];
+		return;
+	}
+}
 
 @end
