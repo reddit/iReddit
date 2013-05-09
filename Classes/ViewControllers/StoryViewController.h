@@ -51,6 +51,7 @@
 - (void)saveCurrentStory:(id)sender;
 - (void)saveOnInstapaper:(id)sender;
 - (void)hideCurrentStory:(id)sender;
+- (void)copyURL:(id)sender;
 
 - (void)setScore:(int)score;
 - (void)setNumberOfComments:(unsigned)num;

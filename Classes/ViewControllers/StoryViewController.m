@@ -17,7 +17,7 @@
 
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
-
+#import <MobileCoreServices/UTCoreTypes.h>
 @implementation StoryViewController
 
 @synthesize story, scoreItem, commentCountItem, segmentedControl, loadingView, toggleButtonItem, webview;
@@ -360,7 +360,7 @@
 						delegate:(id <UIActionSheetDelegate>)self
 						cancelButtonTitle:@"Cancel"
 						destructiveButtonTitle:nil
-						otherButtonTitles:@"E-mail Link", @"Open Link in Safari", @"Hide on reddit", @"Save on reddit", @"Save on Instapaper", nil];
+						otherButtonTitles:@"E-mail Link", @"Copy URL", @"Open Link in Safari", @"Hide on reddit", @"Save on reddit", @"Save on Instapaper", nil];
 		
 		currentSheet.actionSheetStyle = UIActionSheetStyleDefault;
 		
@@ -424,14 +424,18 @@
 							   otherButtonTitles:nil] autorelease] show];
 		}
 	}
+
+	else if (buttonIndex == 0){
+		[self copyURL:nil];
+	}
 	
-	else if(buttonIndex == 1 )
+	else if(buttonIndex == 2 )
 	{
 		//open link in safari
 		//[[Beacon shared] startSubBeaconWithName:@"openedInSafari" timeSession:NO];
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 	}
-	else if (buttonIndex == 2)
+	else if (buttonIndex == 3)
 	{
 		if (![[LoginController sharedLoginController] isLoggedIn])
 			[LoginViewController presentWithDelegate:(id <LoginViewControllerDelegate>)self context:@"hide"];
@@ -441,7 +445,7 @@
 		//	[[Beacon shared] startSubBeaconWithName:@"savedOnReddit" timeSession:NO];
 		}
 	}
-	else if (buttonIndex == 3)
+	else if (buttonIndex == 4)
 	{
 		if (![[LoginController sharedLoginController] isLoggedIn])
 			[LoginViewController presentWithDelegate:(id <LoginViewControllerDelegate>)self context:@"save"];
@@ -451,13 +455,18 @@
 			//	[[Beacon shared] startSubBeaconWithName:@"savedOnReddit" timeSession:NO];
 		}
 	}
-	else if(buttonIndex == 4)
+	else if(buttonIndex == 5)
 	{
 		[self saveOnInstapaper:nil];
 		//[[Beacon shared] startSubBeaconWithName:@"instapaper" timeSession:NO];
 	}
-	else if(buttonIndex == 4)
+	else if(buttonIndex == 5)
 		[self actionSheetCancel:currentSheet];
+}
+
+-(void)copyURL:(id)sender{
+	UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+	pasteboard.string = story.URL;
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
