@@ -466,7 +466,8 @@
 
 -(void)copyURL:(id)sender{
 	UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-	pasteboard.string = story.URL;
+	pasteboard.url = [NSURL URLWithString: story.URL];
+	[pasteboard release];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
