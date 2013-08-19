@@ -647,7 +647,13 @@ p {
 				
 				commentPoints.className = "comment-points";
 				commentPoints.id = data.id+"_points";
-				commentPoints.innerText = " "+(SCORES[data.name]+VOTES[data.name])+" points ";
+				var numberOfPoints = SCORES[data.name]+VOTES[data.name];
+				if (numberOfPoints == 1) {
+					commentPoints.innerText = " 1 point ";
+				}
+				else {
+					commentPoints.innerText = " "+(numberOfPoints)+" points ";
+				}
 					
 				header.appendChild(commentPoints);
 				
